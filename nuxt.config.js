@@ -63,7 +63,7 @@ export default {
   // Web font loader
   webfontloader: {
     google: {
-      families: ['Montserrat:400,700,800,900&display=swap']
+      families: ['Montserrat:400,500,600,900&display=swap']
     }
   }
 }

@@ -94,7 +94,43 @@
         <h2 class="section__heading">
           FAQs
         </h2>
+        <ul role="list" class="section__faqs">
+          <li>
+            <strong>Is this a joke?</strong>
+            Nope, I'm serious. I've been searching for a partner who'll work with me to grow our love for each other and Allah. If this sounds like you please get in touch.
+          </li>
+          <li>
+            <strong>Are you against arranged marriage?</strong>
+            Not at all! I think arranged marriages have a place and tradition in many Islamic cultures. In fact, there are many studies that show that arranged marriages have many advantages.
+            <br>
+            I just want to try and find someone on my own first.
+          </li>
+          <li>
+            <strong>I know someone who'd be perfect for you, what should I do?</strong>
+            Amazing! Feel free to use the form below to let me know more about them. Just make sure they're looking for a husband and are aware.
+          </li>
+        </ul>
       </div>
+    </section>
+    <section class="section section--form">
+      <div class="section__content">
+        <h2 class="section__heading">
+          Hey soul sister, let's chat
+        </h2>
+        <p>
+          I'm overwhelmed and blessed by the positive response so far.
+          I want to thank everyone, even those of you just wanting to wish me good luck!
+          <br><br>
+          Inshallah I can reply to all the genuine applications (I fully intend to!).
+          Please bear with me, Allah SWT has blessed me with a lot more help on my search than I expected.
+        </p>
+        <div class="section__form">
+          <WifeForm />
+        </div>
+      </div>
+    </section>
+    <section class="section section--copyright">
+      Copyright 2022
     </section>
   </main>
 </template>
@@ -184,6 +220,20 @@ export default Vue.extend({})
         opacity: 0.7;
         margin-bottom: 30px;
       }
+      &__faqs {
+        width: 100%;
+        text-align: left;
+        li {
+          margin-bottom: 10px;
+          > strong {
+            display: block;
+            margin-bottom: 20px;
+          }
+        }
+      }
+      &__form {
+        padding-top: 30px;
+      }
       &--hero {
         background: #f4f4f4;
         color: #ffffff;
@@ -229,6 +279,13 @@ export default Vue.extend({})
         .section__image {
           order: 1;
         }
+      }
+      &--form {
+        background: #f4f4f4;
+        padding: 60px 80px;
+      }
+      &--copyright, &--form {
+        margin-bottom: 30px;
       }
     }
   }
