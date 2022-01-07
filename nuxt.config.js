@@ -20,6 +20,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/composition-api'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -63,7 +64,7 @@ export default {
   // Web font loader
   webfontloader: {
     google: {
-      families: ['Montserrat:400,500,600,900&display=swap']
+      families: ['Montserrat:400,500,600,700,900&display=swap']
     }
   }
 }

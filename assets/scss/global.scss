@@ -100,3 +100,10 @@ img {
   height: 1px;
   background-color: #eee;
 }
+
+.xs\:px-24 {
+  @media screen and (max-width: 700px){
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

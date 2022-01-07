@@ -126,6 +126,7 @@ export default defineComponent({
   &__reset {
     cursor: pointer;
     font-weight: 600;
+    line-height: 1;
     color: rgb(217, 61, 46);
   }
 }
