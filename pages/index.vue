@@ -132,7 +132,7 @@ export default Vue.extend({
       width: 100%;
       border-radius: 40px;
       transition: all .2s ease;
-      background: rgba(255,221,0,1);
+      background: #ecb45a;
     }
     span {
       z-index: 1;
