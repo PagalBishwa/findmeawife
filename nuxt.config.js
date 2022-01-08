@@ -53,7 +53,13 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'en',
+      name: 'Find Me a Wife',
+      theme_color: '#ecb45a'
+    },
+    icon: {
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+      purpose: ['any']
     }
   },
 
