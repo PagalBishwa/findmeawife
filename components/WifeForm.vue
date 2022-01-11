@@ -5,7 +5,7 @@
       <div class="form__heading">
         Find Malik A Wife!
       </div>
-      <p>Think you're the one for me? Apply here and tell me a bit about yourself.</p>
+      <p>{{ description }}</p>
     </div>
     <form>
       <div class="form__field-wrapper">
@@ -17,7 +17,7 @@
         <input type="email" class="form__field" placeholder="Your Answer">
       </div>
       <div class="form__field-wrapper">
-        <label for="" class="form__field-label">Tell me a bit about yourself (like your age, job, are you practising etc.)</label>
+        <label for="" class="form__field-label">{{ moreAbout }}</label>
         <textarea class="form__field form__field--textarea" placeholder="Your Answer" rows="1" />
       </div>
       <div class="flex flex-space-between">
@@ -35,8 +35,15 @@
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  setup () {
-
+  props: {
+    description: {
+      type: String,
+      default: "Think you're the one for me? Apply here and tell me a bit about yourself."
+    },
+    moreAbout: {
+      type: String,
+      default: 'Tell me a bit about yourself (like your age, job, are you practising etc.)'
+    }
   }
 })
 </script>
