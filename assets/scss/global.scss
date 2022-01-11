@@ -107,3 +107,29 @@ img {
     padding-right: 24px;
   }
 }
+
+// Overwrite
+.quill-editor {
+  .ql-snow .ql-stroke {
+    stroke: #FFFFFF;
+  }
+  .ql-toolbar.ql-snow,
+  .ql-container.ql-snow {
+    border-color: #64666a;
+  }
+  .ql-editor.ql-blank::before {
+    color: #FFFFFF;
+  }
+  .ql-container.ql-snow {
+    background: #34383c;
+    font-family: inherit;
+  }
+  &.quill-editor--toolbar-less {
+    .ql-toolbar.ql-snow {
+      display: none;
+    }
+    .ql-toolbar.ql-snow + .ql-container.ql-snow {
+      border-top: 1px solid #64666a
+    }
+  }
+}
