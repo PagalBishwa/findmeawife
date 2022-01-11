@@ -20,7 +20,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/composition-api'
+    '@/plugins/composition-api',
+    { src: '@/plugins/quill-editor', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -65,6 +66,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend (config) {
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto'
+      })
+    }
   },
 
   // Web font loader
