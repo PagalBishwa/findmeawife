@@ -6,7 +6,7 @@
           Edit Section
         </div>
       </div>
-      <div class="builder__editor">
+      <div class="builder__editor thin-scroll">
         <template v-if="editSelection === ''">
           <span class="builder__editor-info-text">Select Section to Edit.</span>
         </template>
