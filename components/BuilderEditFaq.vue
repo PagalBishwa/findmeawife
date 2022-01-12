@@ -13,7 +13,7 @@
       <div class="edit-panel__field">
         <label class="edit-panel__field-title">Faqs</label>
         <div class="edit-panel__field-wrapper">
-          <BuilderEditList :list="faqs" title="question" value-key="answer">
+          <BuilderEditList :list="faqs" title="question" value-key="answer" @links="handleListEvent">
             <template #title-field="{ data }">
               <label>Text</label>
               <textarea v-model="data.question" rows="5" placeholder="Question" />
@@ -31,11 +31,13 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { mapMutations, mapState } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 import { RootState } from '@/store'
 export default defineComponent({
   data () {
     return {
       title: '',
+      links: [{}],
       faqs: [{
         question: 'Is this a joke?',
         answer: "Nope, I'm serious. I've been searching for a partner who'll work with me to grow our love for each other and Allah. If this sounds like you please get in touch."
@@ -66,15 +68,27 @@ export default defineComponent({
     })
   },
   watch: {
+    title () {
+      this.save()
+    }
   },
   mounted () {
     this.faqs = this.faqSection.faqs
   },
   methods: {
     ...mapMutations({
-      setHeroSection: 'setHeroSection'
+      setFaqSection: 'setFaqSection'
     }),
+    handleListEvent (link: Array<any>) {
+      this.links = cloneDeep(link)
+      this.save()
+    },
     save () {
+      const payload = {
+        title: this.title || this.defaultValues.title,
+        faqs: this.links
+      }
+      this.setFaqSection(payload)
     }
   }
 })

@@ -30,7 +30,7 @@
       <div v-if="variant === 'aboutme'" class="edit-panel__field">
         <label class="edit-panel__field-title">Social Media</label>
         <div class="edit-panel__field-wrapper">
-          <BuilderEditList :list="socialMedias" />
+          <BuilderEditList :list="socialMedias" @links="handleListEvent" />
         </div>
       </div>
     </div>
@@ -39,6 +39,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { mapMutations, mapState } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 import { RootState } from '@/store'
 export default defineComponent({
   props: {
@@ -61,6 +62,7 @@ export default defineComponent({
           url: ''
         }
       ],
+      links: [{}],
       isTriggred: false
     }
   },
@@ -123,8 +125,10 @@ export default defineComponent({
     updateImage (imageContent:string) {
       this.image = imageContent
     },
-    saveDefault (_video = true) {
-
+    handleListEvent (link: Array<any>) {
+      console.log({ scope: 'BuilderEditAbout::handleListEvent', link })
+      this.links = cloneDeep(link)
+      this.save()
     },
     save () {
       const payload:Record<string, any> = {
@@ -133,7 +137,7 @@ export default defineComponent({
         content: this.description || this.defaultContent.content
       }
       if (this.variant === 'aboutme') {
-        payload.socialMedia = this.socialMedias.length > 0 ? this.socialMedias : this.defaultContent.socialMedia
+        payload.socialMedia = this.links
         this.setAboutSection(payload)
       } else {
         if (this.isEnabled === false) { return }
