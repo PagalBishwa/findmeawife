@@ -42,7 +42,7 @@
       </template>
     </div>
     <div class="list-builder__action">
-      <button class="button" @click="addMedia">
+      <button class="button" :disabled="mediaLinks.length >= 3" @click="addMedia">
         + Add Item
       </button>
     </div>
@@ -111,6 +111,9 @@ export default defineComponent({
       this.mediaLinks.splice(index, 1)
     },
     addMedia () {
+      if (this.mediaLinks.length >= 3) {
+        return
+      }
       const media: Record<string, string> = {}
       media[this.title] = ''
       media[this.valueKey] = ''
@@ -218,9 +221,14 @@ export default defineComponent({
       font-size: 11px;
       padding: 7px 21px;
       line-height: normal;
+      &:not(:disabled) {
+        &:hover {
+          background-color: #4c4f56;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.20);
+        }
+      }
       &:hover {
-        background-color: #4c4f56;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.20);
+        opacity: 0.4;
       }
     }
   }
