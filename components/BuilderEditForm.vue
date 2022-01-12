@@ -22,12 +22,21 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { mapMutations, mapState } from 'vuex'
+import cloneDeep from 'lodash.clonedeep'
 import { RootState } from '@/store'
 export default defineComponent({
   data () {
     return {
       title: '',
-      description: ''
+      description: '',
+      defaultValues: {
+        title: "Hey soul sister, let's chat",
+        description: "I'm overwhelmed and blessed by the positive response so far. I want to thank everyone, even those of you just wanting to wish me good luck!<br><br>Inshallah I can reply to all the genuine applications (I fully intend to!). Please bear with me, Allah SWT has blessed me with a lot more help on my search than I expected.",
+        form: {
+          description: "Think you're the one for me? Apply here and tell me a bit about yourself.",
+          moreAbout: 'Tell me a bit about yourself (like your age, job, are you practising etc.)'
+        }
+      }
     }
   },
   computed: {
@@ -36,14 +45,24 @@ export default defineComponent({
     })
   },
   watch: {
+    title: 'save',
+    description: 'save'
   },
   mounted () {
-    this.description = this.formSection.description
+    this.description = cloneDeep(this.formSection.description)
   },
   methods: {
     ...mapMutations({
       setFormSection: 'setFormSection'
-    })
+    }),
+    save () {
+      const payload = {
+        title: this.title || this.defaultValues.title,
+        description: this.description || this.defaultValues.description,
+        form: this.defaultValues.form
+      }
+      this.setFormSection(payload)
+    }
   }
 })
 </script>
